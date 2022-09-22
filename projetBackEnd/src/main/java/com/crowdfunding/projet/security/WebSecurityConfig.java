@@ -63,8 +63,10 @@ public class WebSecurityConfig {
                 .antMatchers("/loop/auth/**").permitAll()
                 .antMatchers("/api/test/**").permitAll()
                 .antMatchers("/home/**").permitAll()
-                .antMatchers("/loop/invest/*").permitAll()
+                .antMatchers("/loop/invest/charge").permitAll()
+                .antMatchers("/loop/invest/saveInvest").permitAll()
                 .antMatchers("/error").permitAll()
+                .antMatchers("/api/client/**").permitAll()
                 .anyRequest().authenticated();
         http.authenticationProvider(authenticationProvider());
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);

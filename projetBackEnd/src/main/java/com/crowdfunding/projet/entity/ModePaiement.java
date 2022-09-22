@@ -35,6 +35,4 @@ public class ModePaiement implements Serializable {
     @Column
     private int cvvCarte;
 
-    @OneToMany(mappedBy = "modePaiement")
-    private List<Investissement> investissementList;
 }

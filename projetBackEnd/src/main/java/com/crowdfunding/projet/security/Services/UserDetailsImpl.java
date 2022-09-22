@@ -20,12 +20,24 @@ import java.util.stream.Collectors;
 public class UserDetailsImpl implements UserDetails {
     private static final long serialVersionUID = 1L;
     //attributs
-    private Long id;
+    private Long idUser;
     private String nom;
     private String email;
     @JsonIgnore
-    private String password;
+    private String motDePasse;
     private Collection<? extends GrantedAuthority> authorities;
+    private String prenom;
+    private String photoProfil;
+
+    public UserDetailsImpl(Long idUser, String nom, String prenom, String photoProfil, String email, String motDePasse, List<GrantedAuthority> authorities) {
+        this.idUser=idUser;
+        this.nom=nom;
+        this.prenom=prenom;
+        this.photoProfil=photoProfil;
+        this.email=email;
+        this.motDePasse=motDePasse;
+        this.authorities=authorities;
+    }
 
     public static UserDetailsImpl build(Users user) {
         List<GrantedAuthority> authorities = user.getRoles().stream()
@@ -34,11 +46,20 @@ public class UserDetailsImpl implements UserDetails {
         return new UserDetailsImpl(
                 user.getIdUser(),
                 user.getNom(),
+                user.getPrenom(),
+                user.getPhotoProfil(),
                 user.getEmail(),
                 user.getMotDePasse(),
                 authorities);
     }
 
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public String getPhotoProfil() {
+        return photoProfil;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -46,7 +67,7 @@ public class UserDetailsImpl implements UserDetails {
     }
 
     public Long getId() {
-        return id;
+        return idUser;
     }
 
     public String getEmail() {
@@ -55,7 +76,7 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public String getPassword() {
-        return password;
+        return motDePasse;
     }
 
     @Override
@@ -90,6 +111,6 @@ public class UserDetailsImpl implements UserDetails {
         if (o == null || getClass() != o.getClass())
             return false;
         UserDetailsImpl user = (UserDetailsImpl) o;
-        return Objects.equals(id, user.id);
+        return Objects.equals(idUser, user.idUser);
     }
 }

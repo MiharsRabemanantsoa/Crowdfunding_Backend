@@ -30,8 +30,8 @@ public class Investissement implements Serializable {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateInvestissement;
 
-    @Column(nullable = false)
-    private int etapeCreation;
+//    @Column(nullable = false)
+//    private int etapeCreation;
 
     @ManyToOne
     private Users users;
@@ -39,7 +39,7 @@ public class Investissement implements Serializable {
     @ManyToOne
     private Projet projetInvesti;
 
-    @ManyToOne
-    private ModePaiement modePaiement;
+//    @ManyToOne
+//    private ModePaiement modePaiement;
 
 }
