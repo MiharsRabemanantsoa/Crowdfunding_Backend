@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="crowdfunding" uuid="39130a5b-39f6-48a4-a7a7-bedaf07b2957">
+    <data-source source="LOCAL" name="crowdfunding" uuid="861ded50-1c5f-41d7-ba38-bc837fbe0eaf">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
