@@ -108,6 +108,8 @@ public class Projet implements Serializable {
     @ManyToOne
     private Categorie categProjet;
 
+
+
 //    @OneToMany(mappedBy = "projetInvesti")
 //    private List<Investissement> investissementList;
 

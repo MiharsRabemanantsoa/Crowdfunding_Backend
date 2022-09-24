@@ -6,21 +6,21 @@ public class LoginRequest {
     private String email;
 
     @NotBlank
-    private String password;
+    private String motDePasse;
 
     public String getEmail() {
         return email;
     }
 
-    public void setUsername(String username) {
-        this.email = username;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public String getMotDePasse() {
+        return motDePasse;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setMotDePasse(String password) {
+        this.motDePasse = password;
     }
 }

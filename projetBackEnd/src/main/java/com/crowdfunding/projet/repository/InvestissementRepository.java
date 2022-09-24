@@ -13,4 +13,5 @@ import java.util.List;
 public interface InvestissementRepository extends JpaRepository<Investissement, Long> {
     @Query(value = "SELECT * FROM investissement INNER JOIN users  on investissement.users_id_user=users.id_user WHERE id_user= :id  ;", nativeQuery = true)
     List<Investissement> listInvestissementId(@Param("id")Long id);
+
 }

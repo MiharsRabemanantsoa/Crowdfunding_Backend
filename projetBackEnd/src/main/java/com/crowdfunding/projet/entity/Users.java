@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.nio.file.Paths;
 import java.util.*;
@@ -29,6 +30,7 @@ public class Users implements Serializable {
     @Column(nullable = false, length = 50, unique = true)
     private String email;
 
+    @NotBlank
     @Column(nullable = false)
     private String motDePasse;
 
@@ -61,17 +63,25 @@ public class Users implements Serializable {
     @Column
     private boolean isLogedIn = false;
 
-//    @ManyToMany(fetch = FetchType.LAZY)
-//    @JoinTable(	name = "user_roles",
-//            joinColumns = @JoinColumn(name = "id_user"),
-//            inverseJoinColumns = @JoinColumn(name = "id_role"))
-//    private Set<Role> roles = new HashSet<>();
-    @OneToOne
-    private Role role;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(	name = "user_roles",
+            joinColumns = @JoinColumn(name = "id_user"),
+            inverseJoinColumns = @JoinColumn(name = "id_role"))
+    private Set<Role> roles = new HashSet<>();
+
+//    @OneToOne
+//    private Role role;
 
 //    @OneToMany(mappedBy = "users")
 //    private List<Investissement> investissementList;
 
     @OneToMany(mappedBy = "users")
     private List<ProjetSuivi> projetSuivis;
+
+    public Users(String nom, String prenom, String email, String password) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.motDePasse = password;
+    }
 }
