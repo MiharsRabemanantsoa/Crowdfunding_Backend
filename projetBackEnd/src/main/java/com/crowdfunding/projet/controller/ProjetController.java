@@ -84,4 +84,10 @@ public class ProjetController {
          return ResponseEntity.ok(updateProjet);
         }
 
+        //affichage comptage projet
+        @GetMapping("/comptage")
+        public Long getAfficheComptageProjet(Long id_notification){
+            return projetRepository.getCountProjet(id_notification);
+        }
+
 }

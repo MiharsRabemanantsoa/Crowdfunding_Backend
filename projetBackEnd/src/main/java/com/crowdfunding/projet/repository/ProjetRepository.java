@@ -26,6 +26,9 @@ public interface ProjetRepository extends JpaRepository<Projet, Long> {
     @Query(value = "SELECT * FROM projet INNER JOIN users  on projet.users_id_user=users.id_user WHERE id_user= :id  ;", nativeQuery = true)
     List<Projet> listProjetId(@Param("id")Long id);
 
+    //comptage nombre projet
+    @Query(value="SELECT COUNT (DISTINCT id_projet )FROM public.projet ;", nativeQuery = true)
+    Long getCountProjet(Long id_notification);
 
 
 
