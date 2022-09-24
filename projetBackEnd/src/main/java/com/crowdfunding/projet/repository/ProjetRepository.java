@@ -4,6 +4,7 @@ import com.crowdfunding.projet.entity.Projet;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -20,5 +21,12 @@ public interface ProjetRepository extends JpaRepository<Projet, Long> {
             "from projet INNER JOIN investissement on investissement.projet_investi_id_projet = projet.id_projet where projet.id_projet = :id \n" +
             "GROUP BY projet.id_projet;", nativeQuery = true)
     Object findOneProject(@Param("id")Long id);
+
+    /*projet compte client*/
+    @Query(value = "SELECT * FROM projet INNER JOIN users  on projet.users_id_user=users.id_user WHERE id_user= :id  ;", nativeQuery = true)
+    List<Projet> listProjetId(@Param("id")Long id);
+
+
+
 
 }

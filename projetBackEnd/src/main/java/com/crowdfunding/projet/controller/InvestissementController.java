@@ -60,4 +60,12 @@ public class InvestissementController {
         projet.setSommeCollecte(somme);
         projetService.save(projet);
     }
+    
+    @Autowired
+    InvestissementRepository investissementRepository;
+    @GetMapping("/investissementuser/{id}")
+    public List<Investissement> getInvestissementByIdUser(@PathVariable("id") Long id) {
+        return investissementRepository.listInvestissementId(id);
+    }
 }
+

@@ -25,4 +25,5 @@ public class ProjetService {
 
     //save one project
     public void save(Projet projet){projetRepository.save(projet);}
+
 }
