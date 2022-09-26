@@ -60,4 +60,9 @@ public class InvestissementController {
         projet.setSommeCollecte(somme);
         projetService.save(projet);
     }
+
+    @GetMapping("/admin/nombreInvestisseur")
+    public int investisseurNumber(){
+        return investissementService.nombreInvestisseur();
+    }
 }

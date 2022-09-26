@@ -21,4 +21,13 @@ public interface ProjetRepository extends JpaRepository<Projet, Long> {
             "GROUP BY projet.id_projet;", nativeQuery = true)
     Object findOneProject(@Param("id")Long id);
 
+    @Query(value="select * from projet where statut_id_statut =2 ", nativeQuery = true)
+    List<Projet> projetEnAttente() ;
+
+    @Query(value = "select count(id_projet) as nombreProjet from projet",nativeQuery = true)
+    int nombreProjet();
+
+    @Query(value = " SELECT COUNT(distinct user_id_user ) from projet", nativeQuery = true)
+    int nombrePorteurProjet();
+
 }

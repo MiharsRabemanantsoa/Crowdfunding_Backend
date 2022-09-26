@@ -14,4 +14,8 @@ public class InvestissementService {
     public void enregisterInvest(Investissement investissement){
         investissementRepository.save(investissement);
     }
+
+    public int nombreInvestisseur(){
+        return investissementRepository.nombreInvestisseur();
+    }
 }

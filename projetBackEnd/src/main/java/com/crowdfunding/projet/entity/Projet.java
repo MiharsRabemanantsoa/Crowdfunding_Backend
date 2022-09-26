@@ -3,6 +3,7 @@ package com.crowdfunding.projet.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Cascade;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.w3c.dom.Text;
 
@@ -72,16 +73,46 @@ public class Projet implements Serializable {
     @Column(nullable = true, columnDefinition = "TEXT")
     private String descriptionLongue;
 
+    @Column(nullable = true)
+    private String sousTitre1;
+
+    @Column(nullable = true)
+    private String sousTitre2;
+
+    @Column(nullable = true)
+    private String sousTitre3;
+
+    @Column(nullable = true, columnDefinition = "TEXT")
+    private String description1;
+
+    @Column(nullable = true, columnDefinition = "TEXT")
+    private String description2;
+
+    @Column(nullable = true, columnDefinition = "TEXT")
+    private String description3;
+
+    @Column(nullable = true)
+    private String image1;
+
+    @Column(nullable = true)
+    private String image2;
+
+    @Column(nullable = true)
+    private String image3;
+
     @Column(nullable = false)
     private int etape_Creation=0;
 
     @ManyToOne
     private Statut statut;
 
-    @ManyToOne
+//    @Cascade(org.hibernate.annotations.CascadeType.MERGE)
+    @ManyToOne(cascade = CascadeType.MERGE)
     private Categorie categProjet;
 
-
+    @ManyToOne
+    @JoinColumn(name = "user_id_user")
+    private Users user;
 
 //    @OneToMany(mappedBy = "projetInvesti")
 //    private List<Investissement> investissementList;

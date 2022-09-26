@@ -2,7 +2,7 @@ package com.crowdfunding.projet.controller;
 
 
 import com.crowdfunding.projet.Security.Services.UserDetailsImpl;
-import com.crowdfunding.projet.Security.jwt.JwtUtils;
+import com.crowdfunding.projet.security.jwt.JwtUtils;
 import com.crowdfunding.projet.entity.ERole;
 import com.crowdfunding.projet.entity.Role;
 import com.crowdfunding.projet.entity.Users;
