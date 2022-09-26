@@ -26,6 +26,7 @@ public class ProjetService {
     //save one project
     public void save(Projet projet){projetRepository.save(projet);}
 
+
     //afficher tous les projets en attente de validation
     public  List<Projet> getProjetEnAttenteValidation(){return projetRepository.projetEnAttente();}
 
@@ -34,4 +35,5 @@ public class ProjetService {
 
     //count the number of user that created a project
     public int nombrePorteurProjet(){return projetRepository.nombrePorteurProjet();}
+
 }

@@ -1,9 +1,11 @@
 package com.crowdfunding.projet.repository;
 
+import com.crowdfunding.projet.entity.Notification;
 import com.crowdfunding.projet.entity.Projet;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -21,6 +23,7 @@ public interface ProjetRepository extends JpaRepository<Projet, Long> {
             "GROUP BY projet.id_projet;", nativeQuery = true)
     Object findOneProject(@Param("id")Long id);
 
+
     @Query(value="select * from projet where statut_id_statut =2 ", nativeQuery = true)
     List<Projet> projetEnAttente() ;
 
@@ -29,5 +32,17 @@ public interface ProjetRepository extends JpaRepository<Projet, Long> {
 
     @Query(value = " SELECT COUNT(distinct user_id_user ) from projet", nativeQuery = true)
     int nombrePorteurProjet();
+
+    /*projet compte client*/
+    @Query(value = "SELECT * FROM projet INNER JOIN users  on projet.users_id_user=users.id_user WHERE id_user= :id  ;", nativeQuery = true)
+    List<Projet> listProjetId(@Param("id")Long id);
+
+    //comptage nombre projet
+    @Query(value="SELECT COUNT (DISTINCT id_projet )FROM public.projet ;", nativeQuery = true)
+    Long getCountProjet(Long id_projet);
+
+    @Query(value="SELECT COUNT (DISTINCT id_projet)   FROM projet INNER JOIN statut  on projet.statut_id_statut=statut.id_statut WHERE type_statut= 'fermé'  ;",nativeQuery = true)
+    Long getByProjetFerme( Long id_projet);
+
 
 }

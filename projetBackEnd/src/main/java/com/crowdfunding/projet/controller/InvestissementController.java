@@ -64,5 +64,24 @@ public class InvestissementController {
     @GetMapping("/admin/nombreInvestisseur")
     public int investisseurNumber(){
         return investissementService.nombreInvestisseur();
+
+    
+    @Autowired
+    InvestissementRepository investissementRepository;
+    @GetMapping("/investissementuser/{id}")
+    public List<Investissement> getInvestissementByIdUser(@PathVariable("id") Long id) {
+        return investissementRepository.listInvestissementId(id);
+    }
+
+    //comptage somme investissement dans le site
+    @GetMapping("/comptageInvestissement")
+    public Long getSommeInvestissement(Long id_investissement){
+        return investissementRepository.getSommeInvestissement(id_investissement);
+    }
+
+    @GetMapping("/comptageInvestisseur")
+    public Long getSommeInvestisseur(Long id_investissement){
+        return investissementRepository.getSommeInvestisseur(id_investissement);
     }
 }
+

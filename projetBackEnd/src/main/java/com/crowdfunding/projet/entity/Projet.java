@@ -36,6 +36,24 @@ public class Projet implements Serializable {
     private String image;
 
     @Column(nullable = false)
+    private String sousTitre1;
+
+    @Column(nullable = false)
+    private String sousTitre2;
+
+    @Column(nullable = false)
+    private String SousTitre3;
+
+    @Column(nullable = false)
+    private String image1;
+
+    @Column(nullable = false)
+    private String image2;
+
+    @Column(nullable = false)
+    private String image3;
+
+    @Column(nullable = false)
     private Double sommeObjectif;
 
     @Column()
@@ -66,11 +84,20 @@ public class Projet implements Serializable {
     @Column(nullable = false)
     private int dureeRemboursement;
 
+    @Column(nullable = false, columnDefinition = "TEXT")
+    private String descriptionLongue1;
+
+    @Column(nullable = false, columnDefinition = "TEXT")
+    private String descriptionLongue2;
+
+    @Column(nullable = false, columnDefinition = "TEXT")
+    private String descriptionLongue3;
+
     @Temporal(TemporalType.DATE)
     @Column(columnDefinition = "DATE")
     private Calendar debutRemboursement;
 
-    @Column(nullable = true, columnDefinition = "TEXT")
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String descriptionLongue;
 
     @Column(nullable = true)
