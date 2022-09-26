@@ -2,6 +2,8 @@ package com.crowdfunding.projet.controller;
 
 import com.crowdfunding.projet.entity.Notification;
 import com.crowdfunding.projet.entity.Projet;
+import com.crowdfunding.projet.repository.ProjetRepository;
+import com.crowdfunding.projet.service.ProjetService;
 
 import com.crowdfunding.projet.repository.ProjetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,10 +27,13 @@ import java.util.List;
 @RequestMapping("/api/test")
 public class ProjetController {
     @Autowired
-    ProjetService projetService;
+    private ProjetService projetService;
     @Autowired
-    ProjetRepository projetRepository;
+    private ProjetRepository projetRepository;
+
+
     //@GetMapping("/lien" )
+
 
     @GetMapping("/projet")
     public List<Projet> getAllProject(){
@@ -85,6 +90,7 @@ public class ProjetController {
          return ResponseEntity.ok(updateProjet);
         }
 
+
         //affichage comptage projet
         @GetMapping("/comptageProjet")
         public Long getAfficheComptageProjet(Long id_projet){
@@ -96,5 +102,11 @@ public class ProjetController {
         public Long getByProjetFerme(Long id_projet) {
             return projetRepository.getByProjetFerme( id_projet) ;
         }
+
+    @GetMapping("/unprojet/{id}")
+    public Projet getSimpleOne(@PathVariable("id") Long id){return projetService.oneProject(id);
+    }
+
+
 
 }
