@@ -1,5 +1,6 @@
 package com.crowdfunding.projet.controller;
 
+import com.crowdfunding.projet.entity.Notification;
 import com.crowdfunding.projet.entity.Projet;
 import com.crowdfunding.projet.repository.ProjetRepository;
 import com.crowdfunding.projet.service.ProjetService;
@@ -89,9 +90,23 @@ public class ProjetController {
          return ResponseEntity.ok(updateProjet);
         }
 
+
+        //affichage comptage projet
+        @GetMapping("/comptageProjet")
+        public Long getAfficheComptageProjet(Long id_projet){
+            return projetRepository.getCountProjet(id_projet);
+        }
+
+        //affiche comptage projet ferme
+        @GetMapping("/projetFerme")
+        public Long getByProjetFerme(Long id_projet) {
+            return projetRepository.getByProjetFerme( id_projet) ;
+        }
+
     @GetMapping("/unprojet/{id}")
     public Projet getSimpleOne(@PathVariable("id") Long id){return projetService.oneProject(id);
     }
+
 
 
 }

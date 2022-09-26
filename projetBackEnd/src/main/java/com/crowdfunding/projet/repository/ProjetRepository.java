@@ -1,5 +1,6 @@
 package com.crowdfunding.projet.repository;
 
+import com.crowdfunding.projet.entity.Notification;
 import com.crowdfunding.projet.entity.Projet;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -26,6 +27,12 @@ public interface ProjetRepository extends JpaRepository<Projet, Long> {
     @Query(value = "SELECT * FROM projet INNER JOIN users  on projet.users_id_user=users.id_user WHERE id_user= :id  ;", nativeQuery = true)
     List<Projet> listProjetId(@Param("id")Long id);
 
+    //comptage nombre projet
+    @Query(value="SELECT COUNT (DISTINCT id_projet )FROM public.projet ;", nativeQuery = true)
+    Long getCountProjet(Long id_projet);
+
+    @Query(value="SELECT COUNT (DISTINCT id_projet)   FROM projet INNER JOIN statut  on projet.statut_id_statut=statut.id_statut WHERE type_statut= 'fermé'  ;",nativeQuery = true)
+    Long getByProjetFerme( Long id_projet);
 
 
 
