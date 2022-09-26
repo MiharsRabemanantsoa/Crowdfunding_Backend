@@ -67,6 +67,11 @@ public class WebSecurityConfig {
                 .antMatchers("/loop/invest/saveInvest").permitAll()
                 .antMatchers("/error").permitAll()
                 .antMatchers("/api/client/**").permitAll()
+                .antMatchers("/api/statut").permitAll()
+                .antMatchers("/api/*").permitAll()
+                .antMatchers("/loop/invest/admin/nombreInvestisseur").permitAll()
+                .antMatchers("/api/admin/nombreClient").permitAll()
+                .antMatchers("/notification/**").permitAll()
                 .anyRequest().authenticated();
         http.authenticationProvider(authenticationProvider());
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);

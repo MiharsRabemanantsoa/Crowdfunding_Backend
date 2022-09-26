@@ -31,4 +31,8 @@ public class Notification {
     @Column(nullable = false,columnDefinition = "DATE")
     private Calendar daterecu;
 
+    @ManyToOne
+    @JoinColumn(name = "user_notif_id_user")
+    private Users userNotif;
+
 }

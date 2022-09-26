@@ -23,6 +23,9 @@ public class NotificationService {
         return notificationRepository.save(notif);
     }
 
+    //create notification
+    public void SaveNotification(Notification notification){notificationRepository.save(notification); }
+
 
 
 

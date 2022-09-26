@@ -1,4 +1,4 @@
-package com.crowdfunding.projet.Security.jwt;
+package com.crowdfunding.projet.security.jwt;
 
 import com.crowdfunding.projet.Security.Services.UserDetailsImpl;
 import io.jsonwebtoken.*;

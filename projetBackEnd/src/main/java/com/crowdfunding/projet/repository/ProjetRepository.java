@@ -23,6 +23,16 @@ public interface ProjetRepository extends JpaRepository<Projet, Long> {
             "GROUP BY projet.id_projet;", nativeQuery = true)
     Object findOneProject(@Param("id")Long id);
 
+
+    @Query(value="select * from projet where statut_id_statut =2 ", nativeQuery = true)
+    List<Projet> projetEnAttente() ;
+
+    @Query(value = "select count(id_projet) as nombreProjet from projet",nativeQuery = true)
+    int nombreProjet();
+
+    @Query(value = " SELECT COUNT(distinct user_id_user ) from projet", nativeQuery = true)
+    int nombrePorteurProjet();
+
     /*projet compte client*/
     @Query(value = "SELECT * FROM projet INNER JOIN users  on projet.users_id_user=users.id_user WHERE id_user= :id  ;", nativeQuery = true)
     List<Projet> listProjetId(@Param("id")Long id);
@@ -33,7 +43,6 @@ public interface ProjetRepository extends JpaRepository<Projet, Long> {
 
     @Query(value="SELECT COUNT (DISTINCT id_projet)   FROM projet INNER JOIN statut  on projet.statut_id_statut=statut.id_statut WHERE type_statut= 'fermé'  ;",nativeQuery = true)
     Long getByProjetFerme( Long id_projet);
-
 
 
 }

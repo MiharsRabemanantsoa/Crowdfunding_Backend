@@ -22,5 +22,8 @@ public interface InvestissementRepository extends JpaRepository<Investissement, 
     //comptage investisseur dans le site
     @Query(value="SELECT COUNT (DISTINCT id_investissement )FROM public.investissement;", nativeQuery = true)
     Long getSommeInvestisseur(Long id_investissement);
+    
+     @Query(value = "SELECT COUNT(DISTINCT users_id_user ) from investissement",nativeQuery = true)
+    int nombreInvestisseur();
 
 }
